@@ -1,0 +1,47 @@
+#include<gl\glut.h>
+int count = 1;
+
+void DrawLoop() {
+	
+	glClear(GL_COLOR_BUFFER_BIT); // Enables Window For Writing
+	int x; // X-Axis Position
+	int y; // Y-Axis Position
+	//glTranslatef(175,150,0); // Initiliazes Position For Starting Squares
+
+	for (x = -11; x < 0; x++) {
+
+		for (y = 11; y > 0; y--) {
+			//DrawSquares(x, y, x++ , y , x++ , y--, x, y--); // Creates Vertices for each square
+		}
+
+	} // Creates 5x5 Grid of Squares
+	
+	glFlush();
+}
+
+void Test() {
+	glClear(GL_COLOR_BUFFER_BIT);
+	glColor3f(0, 0, 0); // Black
+	glBegin(GL_QUADS);
+	glVertex2f(-11, 11);
+	glVertex2f(-10, 11);
+	glVertex2f(-10, 10);
+	glVertex2f(-11, 10); // Draws Black Squares
+	glEnd();
+}
+
+int main(int agrc, char ** argv) {
+	
+	glutInit(&agrc, argv);
+	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+	glutInitWindowPosition(100, 100);
+	glutInitWindowSize(600,600); // Window Size 600x600
+	glutCreateWindow("Cafe Wall Illusion"); 
+	glClearColor(.5, .5, .5, .5); // White Background
+	glMatrixMode(GL_PROJECTION);
+	glOrtho(-11.0, 11.0, -11.0, 11.0, -11.0, 11.0); // Creates 720x720 Viewing Area
+	glutDisplayFunc(Test);
+	
+	glutMainLoop();
+
+}
